@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background-color: linen;
+}
+
+h1 {
+  color: maroon;
+  margin-left: 40px;
+} 
+</style>
+</head>
+<body>
+
+<h1>This is a heading</h1>
+<p id="demo">This is a paragraph.</p>
+<button onclick="squareRoot()">Find square root</button>
+<button onclick="fetchData()">Fetch data</button>
+
+<script>
+    // 1. korijen broja
+    function squareRoot() {
+        let number = Number(prompt("Enter your number: "))
+        if(isNaN(number)) {
+            console.error("Invalid input")
+        }
+        else {
+            console.log(`Square root: ${Math.sqrt(number)}`)
+        }
+    }
+
+    // 2. fetchovanje podataka
+    async function fetchData() {
+        try {
+            const res = await fetch('https://reqres.in/api/users')
+            const data = await res.json()
+            console.table(data.data)
+        }
+        catch(e) {
+            console.error(e)
+        }
+    }
+</script>
+
+</body>
+</html>
